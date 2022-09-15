@@ -57,4 +57,20 @@ public class AppTest {
         );
         Assertions.assertTrue(thrown.getMessage().contains(Solver.aShouldBeNotZeroMessage));
     }
+
+    /**
+     * 13. Посмотреть какие еще значения могут принимать числа типа double,
+     * кроме числовых и написать тест с их использованием на все коэффициенты.
+     * solve должен выбрасывать исключение.
+     */
+    @Test
+    void testAisNotNaN(){
+        Solver solver = new Solver();
+
+        RuntimeException thrown = Assertions.assertThrows(
+                RuntimeException.class,
+                ()-> solver.solve(Double.NaN, Double.NaN, Double.NaN, 1e-5)
+        );
+        Assertions.assertTrue(thrown.getMessage().contains(Solver.abcShouldBeANumber));
+    }
 }

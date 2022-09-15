@@ -5,10 +5,15 @@ package org.tonkushin;
  */
 public class Solver {
     public static String aShouldBeNotZeroMessage = "а не может быть равен 0";
+    public static String abcShouldBeANumber = "a, b, c должны быть числами";
 
     public double[] solve(double a, double b, double c, double range) {
         if (a < range && a > -1 * range) {
             throw new RuntimeException(aShouldBeNotZeroMessage);
+        }
+
+        if (Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(c) || Double.isNaN(range)) {
+            throw new RuntimeException(abcShouldBeANumber);
         }
 
         double d = b * b - 4 * a * c;   // дискриминант
